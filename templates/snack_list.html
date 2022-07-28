@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Welcome To Snacks Menu </h3>
+{% if not object_list %}
+<p>There are no snacks Add to menu </p>
+{% endif %}
+<button type="button"><a href="{% url 'snack_create' %}">Add New Snack</a></button>
+<ul>
+    {% for snack in object_list %}
+    <li>
+        <a href="{% url 'snack_detail' snack.pk %}">{{ snack.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
